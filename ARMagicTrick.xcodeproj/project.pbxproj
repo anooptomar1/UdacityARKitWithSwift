@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		840F90971FB99B7900D89A88 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F90961FB99B7900D89A88 /* Ball.swift */; };
 		840F90991FB99E8700D89A88 /* MagicHat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F90981FB99E8700D89A88 /* MagicHat.swift */; };
 		840F909B1FB9C6FF00D89A88 /* SKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F909A1FB9C6FF00D89A88 /* SKExtensions.swift */; };
+		84374B431FBB019E004EA19C /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84374B421FBB019E004EA19C /* Ball.swift */; };
 		84D18FCE1F96291400E281B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D18FCD1F96291400E281B5 /* AppDelegate.swift */; };
 		84D18FD01F96291400E281B5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D18FCF1F96291400E281B5 /* art.scnassets */; };
 		84D18FD21F96291400E281B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D18FD11F96291400E281B5 /* ViewController.swift */; };
@@ -19,9 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		840F90961FB99B7900D89A88 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Ball.swift; path = "../../../../../../Joshua.Newnham/Dropbox/Method - Personal/arkit-swift/ARMagicTrick/ARMagicTrick/Ball.swift"; sourceTree = "<group>"; };
 		840F90981FB99E8700D89A88 /* MagicHat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicHat.swift; sourceTree = "<group>"; };
 		840F909A1FB9C6FF00D89A88 /* SKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKExtensions.swift; sourceTree = "<group>"; };
+		84374B421FBB019E004EA19C /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		84D18FCA1F96291400E281B5 /* ARMagicTrick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARMagicTrick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D18FCD1F96291400E281B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D18FCF1F96291400E281B5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -69,9 +69,9 @@
 				84D18FD61F96291400E281B5 /* Assets.xcassets */,
 				84D18FD81F96291400E281B5 /* LaunchScreen.storyboard */,
 				84D18FDB1F96291400E281B5 /* Info.plist */,
-				840F90961FB99B7900D89A88 /* Ball.swift */,
 				840F90981FB99E8700D89A88 /* MagicHat.swift */,
 				840F909A1FB9C6FF00D89A88 /* SKExtensions.swift */,
+				84374B421FBB019E004EA19C /* Ball.swift */,
 			);
 			path = ARMagicTrick;
 			sourceTree = "<group>";
@@ -150,8 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				840F909B1FB9C6FF00D89A88 /* SKExtensions.swift in Sources */,
-				840F90971FB99B7900D89A88 /* Ball.swift in Sources */,
 				84D18FD21F96291400E281B5 /* ViewController.swift in Sources */,
+				84374B431FBB019E004EA19C /* Ball.swift in Sources */,
 				84D18FCE1F96291400E281B5 /* AppDelegate.swift in Sources */,
 				840F90991FB99E8700D89A88 /* MagicHat.swift in Sources */,
 			);
@@ -293,7 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FMGJU3F2A;
 				INFOPLIST_FILE = ARMagicTrick/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nd116.ARMagicTrick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -309,7 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FMGJU3F2A;
 				INFOPLIST_FILE = ARMagicTrick/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nd116.ARMagicTrick;
 				PRODUCT_NAME = "$(TARGET_NAME)";

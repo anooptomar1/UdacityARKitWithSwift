@@ -25,9 +25,9 @@ class Ball : SCNNode{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-// MARK: - Private methods
-
+    
+    // MARK: - Private methods
+    
     private func initGeometry(){
         // create geometry
         let ball = SCNSphere(radius: radius)
@@ -46,3 +46,4 @@ class Ball : SCNNode{
         self.physicsBody = physicsBody
     }
 }
+
