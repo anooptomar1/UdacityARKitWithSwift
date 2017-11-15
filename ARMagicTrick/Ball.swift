@@ -13,7 +13,11 @@ import ARKit
 class Ball : SCNNode{
     
     var radius : CGFloat = 0.03
-    var mass : CGFloat = 1.1
+    var mass : CGFloat = 1.0
+    var friction : CGFloat = 0.5
+    var rollingFriction : CGFloat = 0.6
+    var damping : CGFloat = 0.3
+    var angularDamping : CGFloat = 0.5
     
     override init() {
         super.init()
@@ -43,6 +47,10 @@ class Ball : SCNNode{
     private func initPhysics(){
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         physicsBody.mass = mass
+        physicsBody.friction = friction
+        physicsBody.rollingFriction = rollingFriction
+        physicsBody.damping = damping
+        physicsBody.angularDamping = angularDamping
         self.physicsBody = physicsBody
     }
 }

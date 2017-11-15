@@ -11,6 +11,9 @@ import SceneKit
 import ARKit
 
 class MagicHat : SCNNode{
+    
+    var tubeNode : SCNNode?
+    
     override init() {
         super.init()
         
@@ -33,9 +36,39 @@ class MagicHat : SCNNode{
             fatalError("Failed to find child with the name magichat")
         }
         
+        for childNode in magichat.childNodes{
+            if let name = childNode.name{
+                if name == "tube"{
+                    tubeNode = childNode
+                    break
+                }
+            }
+        }
+        
         magichat.position = SCNVector3(0, 0, 0)
         
         self.addChildNode(magichat)
     }
     
+    func boundingBoxContains(_ node: SCNNode) -> Bool {
+        return self.boundingBoxContains(node.presentation.worldPosition)
+    }
+    
+    func boundingBoxContains(_ point: SCNVector3) -> Bool{
+        let node = self.tubeNode ?? self
+        var (min, max) = node.presentation.boundingBox
+        
+        let size = max - min
+        min = SCNVector3(self.worldPosition.x - size.x/2, self.worldPosition.y, self.worldPosition.z - size.z/2)
+        max = SCNVector3(self.worldPosition.x + size.x/2, self.worldPosition.y + size.y, self.worldPosition.z + size.z/2)
+        
+        return
+            point.x >= min.x  &&
+                point.y >= min.y  &&
+                point.z >= min.z  &&
+                
+                point.x < max.x  &&
+                point.y < max.y  &&
+                point.z < max.z
+    }    
 }

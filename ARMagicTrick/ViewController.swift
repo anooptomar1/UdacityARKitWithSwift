@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     
     var ballsContainer : SCNNode?
     
+    // toggle on/off for 'Magic!' button to 'reverse magic' (when toggled on)
+    var magicEnabled : Bool = false
+    
     var magicHat : MagicHat?{
         get{
             return sceneView.scene.rootNode.childNode(withName: "MagicHat", recursively: true) as? MagicHat
@@ -122,7 +125,7 @@ class ViewController: UIViewController {
         // Show debug UI to view performance metrics (e.g. frames per second).
         //sceneView.showsStatistics = true
         
-        //self.sceneView.debugOptions = [.showConstraints, .showPhysicsShapes, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+//        self.sceneView.debugOptions = [.showConstraints, .showPhysicsShapes, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         self.sceneView.autoenablesDefaultLighting = true
         self.sceneView.automaticallyUpdatesLighting = true
@@ -172,13 +175,10 @@ extension ViewController{
          Make balls within the hat disappear!
         */
         
-        guard let magicHat = self.magicHat else{ return }
+        guard let magicHat = self.magicHat, let ballsContainer = self.ballsContainer else{ return }
         
-//        let (min, max) = magicHat.boundingBox
-//        let size = SCNVector3(max.x - min.x, max.y - min.y, max.z - min.z)
-//        print("MH size \(size)")
-        
-        guard let ballsContainer = self.ballsContainer else{ return }
+        // toggle magicEnabled
+        self.magicEnabled = !self.magicEnabled
         
         for i in (0..<ballsContainer.childNodes.count).reversed(){
             let ball = ballsContainer.childNodes[i]
@@ -187,7 +187,7 @@ extension ViewController{
             if magicHat.boundingBoxContains(ball){
                 
                 // ball within bounds, remove ball
-                ball.removeFromParentNode()
+                ball.isHidden = self.magicEnabled
             }
         }
     }
@@ -230,17 +230,23 @@ extension ViewController : ARSCNViewDelegate{
             return
         }
         
-        let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+        let planePadding : CGFloat = 10
+        let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x) * planePadding,
+                             height: CGFloat(planeAnchor.extent.z) * planePadding)
         
         let planeMaterial = SCNMaterial()
-        planeMaterial.diffuse.contents = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
+        planeMaterial.diffuse.contents = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
         plane.materials = [planeMaterial]
         
         let planeNode = SCNNode(geometry: plane)
-        planeNode.position = SCNVector3Make(planeAnchor.center.x, 0, planeAnchor.center.z)
+        planeNode.position = SCNVector3Make(
+            planeAnchor.center.x - Float(plane.width - CGFloat(planeAnchor.extent.x)/2),
+            0,
+            planeAnchor.center.z - Float(plane.height - CGFloat(planeAnchor.extent.z)/2))
         planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
         
         let physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
+        physicsBody.friction = 0.8
         planeNode.physicsBody = physicsBody
         
         node.addChildNode(planeNode)

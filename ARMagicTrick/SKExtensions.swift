@@ -19,24 +19,12 @@ extension SCNVector3{
     static func - (left: SCNVector3, right : SCNVector3) -> SCNVector3 {
         return SCNVector3(left.x - right.x, left.y - right.y, left.z - right.z)
     }
-}
-
-extension SCNNode {
     
-    func boundingBoxContains(_ node: SCNNode) -> Bool {
-        return self.boundingBoxContains(node.presentation.boundingSphere.center)
+    static func / (left: SCNVector3, right : Float) -> SCNVector3 {
+        return SCNVector3(left.x / right, left.y / right, left.z / right)
     }
     
-    func boundingBoxContains(_ point: SCNVector3) -> Bool{
-        let (min, max) = self.presentation.boundingBox
-        
-        return
-            point.x >= min.x  &&
-                point.y >= min.y  &&
-                point.z >= min.z  &&
-                
-                point.x < max.x  &&
-                point.y < max.y  &&
-                point.z < max.z
-    }    
+    static func * (left: SCNVector3, right : Float) -> SCNVector3 {
+        return SCNVector3(left.x * right, left.y * right, left.z * right)
+    }
 }
